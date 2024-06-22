@@ -11,6 +11,16 @@ console.log(ft);
 var course = {
     title: "Spring mvc",
     subtitle: "Learn fundamentals of typescript",
-    lessonsCount: 10
+    lessonsCount: 10,
+    author: {
+        firstName: "James",
+        lastName: "Bond",
+    }
 };
 console.log(course.title);
+var courseJava = {
+    title: "Spring mvc"
+};
+if (courseJava === null || courseJava === void 0 ? void 0 : courseJava.title) {
+    console.log("The title is: ".concat(courseJava.title));
+}

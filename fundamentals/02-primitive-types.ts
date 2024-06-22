@@ -25,3 +25,11 @@ const course = {
 };
 
 console.log(course.title);
+
+let courseJava = {
+    title:"Spring mvc"
+}
+
+if (courseJava?.title){
+    console.log(`The title is: ${courseJava.title}`)
+}
