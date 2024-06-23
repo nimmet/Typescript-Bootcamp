@@ -1,5 +1,5 @@
 
-enum CourseType {
+export enum CourseType {
     FREE = "FREE",
     PREMIUM="PREMIUM",
     PRIVATE="PRIVATE",
