@@ -28,6 +28,17 @@ export function Log(level: LoggingLevel):MethodDecorator {
 
             originalFunction.apply(this,args);
         }
+    }
+}
 
+export function Perf():MethodDecorator {
+    return (target:any, propertyKey:string, descriptor:PropertyDescriptor  ) => {
+        const originalFunction:Function = descriptor.value;
+
+        descriptor.value = function (...args:any[] )  {
+            console.log(`started at ${new Date().getTime()}`)
+            originalFunction.apply(this,args);
+            console.log(`ended at ${new Date().getTime()}`);
+        }
     }
 }

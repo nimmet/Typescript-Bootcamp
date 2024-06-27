@@ -1,16 +1,17 @@
 
 
-// @SealClass()
 // @DatabaseService()
-import {Log, LoggingLevel} from "./02-method-decorators";
+import {Log, LoggingLevel, Perf} from "./02-method-decorators";
+import {SealClass} from "./03-class-decorator";
 
+@SealClass()
 class DbService {
 
     showData(){
 
     }
 
-    // @perf()
+    @Perf()
     @Log(LoggingLevel.DEBUG)
     saveData(data:any){
         console.log(`Saving data in the database...`);
@@ -19,3 +20,9 @@ class DbService {
 
 const db = new DbService();
 db.saveData({hello:"world"});
+
+Object.defineProperty(DbService,"sayHello",{
+    value: () =>{
+        console.log("Hello World");
+    }
+})

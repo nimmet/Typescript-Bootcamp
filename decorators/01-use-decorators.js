@@ -6,22 +6,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// @SealClass()
 // @DatabaseService()
 var _02_method_decorators_1 = require("./02-method-decorators");
+var _03_class_decorator_1 = require("./03-class-decorator");
 var DbService = /** @class */ (function () {
     function DbService() {
     }
     DbService.prototype.showData = function () {
     };
-    // @perf()
     DbService.prototype.saveData = function (data) {
         console.log("Saving data in the database...");
     };
     __decorate([
+        (0, _02_method_decorators_1.Perf)(),
         (0, _02_method_decorators_1.Log)(_02_method_decorators_1.LoggingLevel.DEBUG)
     ], DbService.prototype, "saveData", null);
+    DbService = __decorate([
+        (0, _03_class_decorator_1.SealClass)()
+    ], DbService);
     return DbService;
 }());
 var db = new DbService();
 db.saveData({ hello: "world" });
+Object.defineProperty(DbService, "sayHello", {
+    value: function () {
+        console.log("Hello World");
+    }
+});

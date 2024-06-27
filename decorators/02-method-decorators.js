@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoggingLevel = void 0;
 exports.Log = Log;
+exports.Perf = Perf;
 var LoggingLevel;
 (function (LoggingLevel) {
     LoggingLevel[LoggingLevel["INFO"] = 0] = "INFO";
@@ -25,6 +26,20 @@ function Log(level) {
                 console.log(">> Log: ".concat(propertyKey, ", ").concat(JSON.stringify(args)));
             }
             originalFunction.apply(this, args);
+        };
+    };
+}
+function Perf() {
+    return function (target, propertyKey, descriptor) {
+        var originalFunction = descriptor.value;
+        descriptor.value = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            console.log("started at ".concat(new Date().getTime()));
+            originalFunction.apply(this, args);
+            console.log("ended at ".concat(new Date().getTime()));
         };
     };
 }
