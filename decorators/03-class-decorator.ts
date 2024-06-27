@@ -1,8 +1,8 @@
 
-export function SealClass(): ClassDecorator {
+export function SealClass(constructor:Function) {
 
-    return (constructor: Function) => {
+
         Object.seal(constructor);
         Object.seal(constructor.prototype);
-    }
+
 }

@@ -4,7 +4,7 @@
 import {Log, LoggingLevel, Perf} from "./02-method-decorators";
 import {SealClass} from "./03-class-decorator";
 
-@SealClass()
+@SealClass
 class DbService {
 
     showData(){
